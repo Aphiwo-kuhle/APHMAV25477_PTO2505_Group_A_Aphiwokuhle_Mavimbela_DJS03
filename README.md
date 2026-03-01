@@ -1,16 +1,85 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🎙️ Podcast Explorer App
 
-Currently, two official plugins are available:
+A modern React-based podcast discovery application that allows users to browse, search, and explore detailed podcast information using a clean and responsive user interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+🔗 View Live Project:
+https://Aphiwo-kuhle.github.io/APHMAV25477_PTO2505_Group_A_Aphiwokuhle_Mavimbela_DJS03/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📌 Project Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This project was built as part of the DJS03 assessment.
+
+The application allows users to:
+
+- View all available podcasts
+- Search podcasts dynamically
+- Sort podcasts by last updated date
+- Click a podcast card to view more details in a modal
+- View podcast genres
+- See the total number of seasons displayed in a formal format
+- Experience loading and error states
+- Use the application across desktop, tablet, and mobile devices
+
+---
+
+## 🛠️ Technologies Used
+
+- React
+- Vite
+- JavaScript (ES6+)
+- CSS
+- Git & GitHub
+- GitHub Pages (Deployment)
+
+---
+
+## ✨ Key Features
+
+### 🔎 Dynamic Search
+Users can search podcasts by typing any part of the title.
+
+### 📅 Sorting
+Podcasts can be sorted by last updated date.
+
+### 🎭 Modal-Based Details View
+Clicking a podcast card opens a modal that displays:
+- Podcast image
+- Description
+- Genres (clickable)
+- Number of seasons (formatted properly)
+- Additional details
+
+### 📱 Fully Responsive Design
+The application works seamlessly across:
+- Desktop
+- Tablet
+- Mobile
+
+### ⏳ Loading & Error Handling
+The app displays proper loading states and error messages during API requests.
+
+---
+
+## 🧠 Concepts Applied
+
+- Component-based architecture
+- Props and state management
+- Conditional rendering
+- Data fetching with async/await
+- Reusable UI components
+- Responsive layout design
+- Deployment configuration with GitHub Pages
+
+---
+
+## 📂 Installation (Local Development)
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Aphiwo-kuhle/APHMAV25477_PTO2505_Group_A_Aphiwokuhle_Mavimbela_DJS03.git
