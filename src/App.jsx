@@ -1,60 +1,87 @@
 import { useEffect, useState } from "react";
 import PodcastPreviewCard from "./components/PodcastPreviewCard";
 import PodcastModal from "./components/PodcastModal";
-import "./styles/App.css";
+import "./App.css";
 
 /**
- * App component
- * Fetches podcast data and renders preview cards.
+ * Main Application Component.
+ * Fetches podcast data and renders preview grid.
+ * @returns {JSX.Element}
  */
 function App() {
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedPodcast, setSelectedPodcast] = useState(null); // For modal
+  const [selectedPodcast, setSelectedPodcast] = useState(null);
 
   /**
-   * Fetch podcast data when component mounts
+   * Fetch podcast data from external API.
    */
   useEffect(() => {
-    fetch("https://podcast-api.netlify.app/")
-      .then((response) => {
-        if (!response.ok) throw new Error("Failed to fetch podcasts.");
-        return response.json();
-      })
-      .then((data) => {
+    const fetchPodcasts = async () => {
+      try {
+        const response = await fetch(
+          "https://podcast-api.netlify.app/"
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch podcasts.");
+        }
+
+        const data = await response.json();
         setPodcasts(data);
-        setLoading(false);
-      })
-      .catch((err) => {
+      } catch (err) {
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchPodcasts();
   }, []);
 
-  if (loading) return <p className="status">Loading podcasts...</p>;
-  if (error) return <p className="status error">Error: {error}</p>;
-  if (podcasts.length === 0) return <p className="status">No podcasts available.</p>;
+  const openModal = (podcast) => setSelectedPodcast(podcast);
+  const closeModal = () => setSelectedPodcast(null);
 
   return (
-    <div>
-      <h1>Podcast Discovery App</h1>
+    <div className="container">
+      <h1 className="title">Podcast Discovery</h1>
 
-      <div className="podcast-grid">
-        {podcasts.map((podcast) => (
-          <PodcastPreviewCard
-            key={podcast.id}
-            podcast={podcast}
-            onClick={() => setSelectedPodcast(podcast)}
-          />
-        ))}
-      </div>
+      {loading && (
+        <div className="status">
+          <div className="spinner"></div>
+          Loading podcasts...
+        </div>
+      )}
 
-      {/* Show modal if user clicked a card */}
+      {error && (
+        <div className="status error">
+          {error}
+        </div>
+      )}
+
+      {!loading && !error && podcasts.length === 0 && (
+        <div className="status">
+          No podcasts available.
+        </div>
+      )}
+
+      {!loading && !error && podcasts.length > 0 && (
+        <div className="grid">
+          {podcasts.map((podcast) => (
+            <PodcastPreviewCard
+              key={podcast.id}
+              podcast={podcast}
+              onClick={() => openModal(podcast)}
+            />
+          ))}
+        </div>
+      )}
+
       {selectedPodcast && (
         <PodcastModal
           podcast={selectedPodcast}
-          onClose={() => setSelectedPodcast(null)}
+          onClose={closeModal}
         />
       )}
     </div>

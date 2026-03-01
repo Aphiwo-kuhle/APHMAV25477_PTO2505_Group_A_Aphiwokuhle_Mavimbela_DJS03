@@ -1,26 +1,41 @@
-import { formatDistanceToNow, parseISO } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
+import { genreMap } from "../data/genreMap";
 
 /**
- * PodcastPreviewCard component
- * Displays a single podcast preview and handles click.
+ * Renders a podcast preview card.
  * @param {Object} props
- * @param {Object} props.podcast - Podcast data
- * @param {Function} props.onClick - Function to call when card is clicked
+ * @param {Object} props.podcast - Podcast data object
+ * @param {Function} props.onClick - Click handler
+ * @returns {JSX.Element}
  */
 function PodcastPreviewCard({ podcast, onClick }) {
-  const updatedDate = formatDistanceToNow(parseISO(podcast.updated), { addSuffix: true });
+  const { title, image, seasons, genres, updated } = podcast;
 
   return (
-    <div
-      className="podcast-card"
-      onClick={onClick}
-      style={{ cursor: "pointer" }}
-    >
-      <img src={podcast.image} alt={podcast.title} />
-      <h3>{podcast.title}</h3>
-      <p>Seasons: {podcast.seasons}</p>
-      <p>Genres: {podcast.genres.join(", ")}</p>
-      <p>Last Updated: {updatedDate}</p>
+    <div className="card" onClick={onClick}>
+      <img src={image} alt={title} className="card-image" />
+
+      <h2 className="card-title">{title}</h2>
+
+      <div className="genre-container">
+        {genres.map((id) => (
+          <span
+            key={id}
+            className="genre-tag"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {genreMap[id]}
+          </span>
+        ))}
+      </div>
+
+      <p className="season-count">
+        {seasons} {seasons === 1 ? "Season" : "Seasons"}
+      </p>
+
+      <p className="updated">
+        Updated {formatDistanceToNow(new Date(updated))} ago
+      </p>
     </div>
   );
 }

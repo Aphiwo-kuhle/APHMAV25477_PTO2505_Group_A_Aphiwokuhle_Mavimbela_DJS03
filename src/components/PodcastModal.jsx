@@ -1,25 +1,47 @@
-import { formatDistanceToNow, parseISO } from "date-fns";
+import { genreMap } from "../data/genreMap";
 
 /**
- * PodcastModal component
- * Displays detailed podcast information in an overlay
+ * Modal that displays detailed podcast information.
  * @param {Object} props
- * @param {Object} props.podcast - Podcast data
- * @param {Function} props.onClose - Function to close modal
+ * @param {Object} props.podcast - Selected podcast
+ * @param {Function} props.onClose - Close modal function
+ * @returns {JSX.Element|null}
  */
 function PodcastModal({ podcast, onClose }) {
-  const updatedDate = formatDistanceToNow(parseISO(podcast.updated), { addSuffix: true });
+  if (!podcast) return null;
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>✕</button>
-        <img src={podcast.image} alt={podcast.title} />
+      <div
+        className="modal-card"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="modal-close" onClick={onClose}>
+          ×
+        </button>
+
         <h2>{podcast.title}</h2>
-        <p><strong>Seasons:</strong> {podcast.seasons}</p>
-        <p><strong>Genres:</strong> {podcast.genres.join(", ")}</p>
-        <p><strong>Last Updated:</strong> {updatedDate}</p>
-        <p><strong>Description:</strong> {podcast.description || "No description available."}</p>
+
+        <img
+          src={podcast.image}
+          alt={podcast.title}
+          className="card-image"
+        />
+
+        <div className="genre-container">
+          {podcast.genres.map((id) => (
+            <span key={id} className="genre-tag">
+              {genreMap[id]}
+            </span>
+          ))}
+        </div>
+
+        <p>{podcast.description}</p>
+
+        <p className="season-count">
+          {podcast.seasons}{" "}
+          {podcast.seasons === 1 ? "Season" : "Seasons"}
+        </p>
       </div>
     </div>
   );
