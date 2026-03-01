@@ -77,9 +77,71 @@ The app displays proper loading states and error messages during API requests.
 
 ---
 
+
 ## 📂 Installation (Local Development)
 
 Clone the repository:
 
-```bash
-git clone https://github.com/Aphiwo-kuhle/APHMAV25477_PTO2505_Group_A_Aphiwokuhle_Mavimbela_DJS03.git
+
+Navigate into the project:
+
+cd APHMAV25477_PTO2505_Group_A_Aphiwokuhle_Mavimbela_DJS03
+
+Install dependencies:
+
+npm install
+
+Run development server:
+
+npm run dev
+
+Build for production:
+
+npm run build
+🌍 Deployment
+
+The project is deployed using GitHub Pages.
+
+Deployment steps include:
+
+Configuring Vite base path
+
+Using gh-pages package
+
+Publishing the dist folder to the gh-pages branch
+
+👨‍💻 Author
+
+Aphiwokuhle Mavimbela
+
+📜 License
+
+This project was developed for educational purposes.
+
+---
+
+# 🎯 Final Checklist Before Submission
+
+Make sure:
+
+✔ Your live link works  
+✔ Refreshing the page does not break routing  
+✔ Modal opens and closes correctly  
+✔ Search works  
+✔ Sorting works  
+✔ Genres are clickable  
+✔ Responsive design works  
+✔ README is added and pushed  
+
+---
+
+If you want, I can now:
+
+- Review your live site like a lecturer would  
+- Help you improve UI slightly to look more professional  
+- Check your routing setup  
+- Simulate marking feedback  
+
+You are very close to distinction level now 👌🔥
+
+
