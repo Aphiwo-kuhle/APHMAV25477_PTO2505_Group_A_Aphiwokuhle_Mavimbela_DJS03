@@ -93,14 +93,14 @@ cd APHMAV25477_PTO2505_Group_A_Aphiwokuhle_Mavimbela_DJS03
 
 npm install
 
-##Run development server:
+Run development server:
 
 npm run dev
 
-##Build for production:
+Build for production:
 
 npm run build
-#🌍 Deployment
+🌍 Deployment
 
 The project is deployed using GitHub Pages.
 
@@ -112,13 +112,13 @@ Using gh-pages package
 
 Publishing the dist folder to the gh-pages branch
 
-#👨‍💻 Author
+👨‍💻 Author
 
 Aphiwokuhle Mavimbela
 
 
 
-#📜 License
+📜 License
 
 This project was developed for educational purposes.
 
