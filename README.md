@@ -83,6 +83,8 @@ The app displays proper loading states and error messages during API requests.
 Clone the repository:
 
 
+git clone https://github.com/Aphiwo-kuhle/APHMAV25477_PTO2505_Group_A_Aphiwokuhle_Mavimbela_DJS03.git
+
 Navigate into the project:
 
 cd APHMAV25477_PTO2505_Group_A_Aphiwokuhle_Mavimbela_DJS03
